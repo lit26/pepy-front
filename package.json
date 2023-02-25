@@ -9,22 +9,31 @@
     "@mui/lab": "^5.0.0-alpha.117",
     "@mui/material": "^5.11.6",
     "@mui/styles": "^5.11.2",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.12",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
     "cypress": "^9.5.2",
     "dayjs": "^1.11.7",
     "minimatch": "^5.1.2",
     "prettier": "^2.8.1",
-    "react": "^17.0.2",
+    "react": "^18.2.0",
     "react-app-polyfill": "^3.0.0",
-    "react-dom": "^17.0.2",
+    "react-dom": "^18.2.0",
     "react-github-btn": "^1.4.0",
     "react-helmet": "^6.1.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^5.0.1",
+    "react-scripts": "5.0.1",
     "react-window": "^1.8.8",
     "recharts": "^2.1.9",
     "redux": "^4.2.0",
-    "redux-thunk": "^2.4.2"
+    "redux-thunk": "^2.4.2",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -34,7 +43,10 @@
     "format": "prettier --single-quote --trailing-comma es5 --write \"{src,__{tests,mocks}__}/**/*.js\""
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
@@ -49,6 +61,8 @@
     ]
   },
   "devDependencies": {
+    "@types/react-helmet": "^6.1.6",
+    "@types/react-router-dom": "^5.3.3",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.8.0",
     "enzyme": "^3.11.0"
   }
