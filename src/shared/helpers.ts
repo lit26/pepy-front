@@ -1,16 +1,16 @@
-export function formatDownloads(downloads, maxPrecision = 2) {
+export function formatDownloads(downloads: number, maxPrecision = 2) {
   let letter = null;
   if (downloads < 1000) {
-    letter = '';
+    letter = "";
   } else if (downloads < 1000000) {
     downloads = downloads / 1000;
-    letter = 'k';
+    letter = "k";
   } else if (downloads < 1000000000) {
     downloads = downloads / 1000000;
-    letter = 'M';
+    letter = "M";
   } else {
     downloads = downloads / 1000000000;
-    letter = 'G';
+    letter = "G";
   }
 
   if (downloads % 10 === 0 || Number.isInteger(downloads)) {

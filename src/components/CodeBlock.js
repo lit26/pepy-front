@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   OutlinedInput,
   InputAdornment,
   IconButton,
   Snackbar,
-} from '@mui/material';
-import FileCopy from '@mui/icons-material/FileCopyOutlined';
+} from "@mui/material";
+import FileCopy from "@mui/icons-material/FileCopyOutlined";
 
 class CodeBlock extends Component {
   state = {
     snackbarOpen: false,
-    message: '',
+    message: "",
   };
 
   constructor(props) {
@@ -21,7 +21,7 @@ class CodeBlock extends Component {
       Math.random().toString(36).substring(2, 15);
     this.state = {
       snackbarOpen: false,
-      message: '',
+      message: "",
       id: randomId,
     };
   }
@@ -35,9 +35,9 @@ class CodeBlock extends Component {
     copyText.disabled = false;
     copyText.select();
     copyText.setSelectionRange(0, 99999); /*For mobile devices*/
-    document.execCommand('copy');
+    document.execCommand("copy");
     copyText.disabled = true;
-    this.showMessage('Text copied');
+    this.showMessage("Text copied");
   };
 
   handleCloseSnackbar = () => {
@@ -69,14 +69,14 @@ class CodeBlock extends Component {
         />
         <Snackbar
           anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'center',
+            vertical: "bottom",
+            horizontal: "center",
           }}
           open={this.state.snackbarOpen}
           autoHideDuration={4000}
           onClose={this.handleCloseSnackbar}
           ContentProps={{
-            'aria-describedby': 'message-id',
+            "aria-describedby": "message-id",
           }}
           message={<span id="message-id">{this.state.message}</span>}
         />
