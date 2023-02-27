@@ -1,28 +1,34 @@
-import React, { Component } from 'react';
-import { Link } from '@mui/material';
-import { withStyles } from '@mui/styles';
-import { Link as RouterLink } from 'react-router-dom';
-import Emoji from './Emoji';
-import Grid from '@mui/material/Grid';
-import Container from '@mui/material/Container';
+import React, { Component } from "react";
+import { Link, Theme } from "@mui/material";
+import { withStyles } from "@mui/styles";
+import { Link as RouterLink } from "react-router-dom";
+import Emoji from "./Emoji";
+import Grid from "@mui/material/Grid";
+import Container from "@mui/material/Container";
 
-const styles = (theme) => ({
+const styles = (theme: Theme) => ({
   footer: {
     padding: theme.spacing(0, 2, 2, 2),
-    marginTop: 'auto',
+    marginTop: "auto",
   },
   imgContainer: {
     margin: theme.spacing(3, 0),
   },
   img: {
-    maxWidth: '40%',
-    [theme.breakpoints.down('lg')]: {
-      maxWidth: '50%',
+    maxWidth: "40%",
+    [theme.breakpoints.down("lg")]: {
+      maxWidth: "50%",
     },
   },
 });
 
-class Footer extends Component {
+type FooterProps = {
+  classes: {
+    [x: string]: string;
+  };
+};
+
+class Footer extends Component<FooterProps> {
   render() {
     const { classes } = this.props;
 
@@ -34,7 +40,7 @@ class Footer extends Component {
               item
               xs={12}
               sm={12}
-              align="center"
+              // align="center"
               className={classes.imgContainer}
             >
               <Link
@@ -51,7 +57,12 @@ class Footer extends Component {
                 />
               </Link>
             </Grid>
-            <Grid item xs={6} sm={4} align="center">
+            <Grid
+              item
+              xs={6}
+              sm={4}
+              // align="center"
+            >
               <Link
                 aria-label="Source code"
                 color="textSecondary"
@@ -62,7 +73,12 @@ class Footer extends Component {
                 We <Emoji symbol="❤️" label="heart" /> open source
               </Link>
             </Grid>
-            <Grid item xs={6} sm={3} align="center">
+            <Grid
+              item
+              xs={6}
+              sm={3}
+              // align="center"
+            >
               <Link
                 aria-label="Follow us"
                 color="textSecondary"
@@ -73,7 +89,12 @@ class Footer extends Component {
                 <Emoji symbol="👤" label="person" /> Follow us
               </Link>
             </Grid>
-            <Grid item xs={6} sm={3} align="center">
+            <Grid
+              item
+              xs={6}
+              sm={3}
+              // align="center"
+            >
               <Link
                 aria-label="Support us"
                 color="textSecondary"
@@ -84,7 +105,12 @@ class Footer extends Component {
                 <Emoji symbol="➕" label="plus" /> Support us
               </Link>
             </Grid>
-            <Grid item xs={6} sm={2} align="center">
+            <Grid
+              item
+              xs={6}
+              sm={2}
+              // align="center"
+            >
               <Link color="textSecondary" component={RouterLink} to="/about">
                 <Emoji symbol="❔" label="question" /> FAQ
               </Link>
