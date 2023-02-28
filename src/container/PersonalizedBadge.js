@@ -72,6 +72,19 @@ const styles = (theme) => ({
   },
 });
 
+const colors = [
+  'black',
+  'brightgreen',
+  'green',
+  'yellow',
+  'yellowgreen',
+  'orange',
+  'red',
+  'blue',
+  'grey',
+  'lightgrey',
+];
+
 const PersonalizedBadge = ({ classes, project }) => {
   const [badgeState, setBadgeState] = useState({
     period: 'month',
@@ -106,28 +119,11 @@ const PersonalizedBadge = ({ classes, project }) => {
     return 'https://pepy.tech/project/' + project;
   };
 
-  const getColors = () => {
-    return [
-      'black',
-      'brightgreen',
-      'green',
-      'yellow',
-      'yellowgreen',
-      'orange',
-      'red',
-      'blue',
-      'grey',
-      'lightgrey',
-    ];
-  };
-
-  const colorsOptions = getColors().map((color) => {
-    return (
-      <MenuItem key={color} value={color}>
-        {color}
-      </MenuItem>
-    );
-  });
+  const colorsOptions = colors.map((color) => (
+    <MenuItem key={color} value={color}>
+      {color}
+    </MenuItem>
+  ));
 
   return (
     <>

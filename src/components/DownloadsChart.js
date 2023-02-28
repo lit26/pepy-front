@@ -69,9 +69,7 @@ const DownloadsChart = ({ classes, selectedVersions, data }) => {
               day: 'numeric',
             })
           }
-          formatter={(downloads) => {
-            return formatDownloads(downloads);
-          }}
+          formatter={(downloads) => formatDownloads(downloads)}
         />
         <Legend />
 

@@ -34,31 +34,27 @@ const DownloadsTable = ({ classes, data, selectedVersions }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {downloads.map((row) => {
-            return (
-              <TableRow
-                className={
-                  new Date(row['date']).getDay() % 6 === 0
-                    ? classes.weekendRow
-                    : ''
-                }
-                key={row['date']}
-              >
-                <TableCell scope="row">{row['date']}</TableCell>
-                {selectedVersions.map((version) => (
-                  <TableCell key={version}>
-                    {row[version].toLocaleString()}
-                  </TableCell>
-                ))}
-                <TableCell align="right">
-                  {row['sum'].toLocaleString()}
+          {downloads.map((row) => (
+            <TableRow
+              className={
+                new Date(row['date']).getDay() % 6 === 0
+                  ? classes.weekendRow
+                  : ''
+              }
+              key={row['date']}
+            >
+              <TableCell scope="row">{row['date']}</TableCell>
+              {selectedVersions.map((version) => (
+                <TableCell key={version}>
+                  {row[version].toLocaleString()}
                 </TableCell>
-                <TableCell align="right">
-                  {row['total'].toLocaleString()}
-                </TableCell>
-              </TableRow>
-            );
-          })}
+              ))}
+              <TableCell align="right">{row['sum'].toLocaleString()}</TableCell>
+              <TableCell align="right">
+                {row['total'].toLocaleString()}
+              </TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </TableContainer>

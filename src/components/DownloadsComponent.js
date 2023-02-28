@@ -130,48 +130,34 @@ const DownloadsComponent = ({ data, history, classes }) => {
       return selectedVersion in downloads;
     }
 
-    const versions = Object.keys(downloads);
-    for (const version of versions) {
-      if (minimatch(version, selectedVersion)) {
-        return true;
-      }
-    }
-
-    return false;
+    return Object.keys(downloads).find((version) =>
+      minimatch(version, selectedVersion)
+    );
   };
 
   const retrieveVersionDownloads = (selectedVersion, download) => {
     if (!selectedVersion.includes('*')) {
       return download[selectedVersion];
     }
-
-    let total = 0;
-    for (const [version, value] of Object.entries(download)) {
-      if (minimatch(version, selectedVersion)) {
-        total += value;
-      }
-    }
-    return total;
+    return Object.keys(download).reduce(
+      (acc, key) =>
+        minimatch(key, selectedVersion) ? acc + download[key] : acc,
+      0
+    );
   };
 
   const updateSelectedVersions = (value) => {
     setSelectedVersions(value);
+    let currentUrlParams = new URLSearchParams(window.location.search);
     if (value.length > 0) {
-      let currentUrlParams = new URLSearchParams(window.location.search);
       currentUrlParams.set('versions', value[0]);
       value
         .slice(1, value.length)
         .forEach((x) => currentUrlParams.append('versions', x));
-      history.push(
-        window.location.pathname + '?' + currentUrlParams.toString()
-      );
     } else {
-      let currentUrlParams = new URLSearchParams(window.location.search);
       currentUrlParams.delete('versions');
-      history.push(
-        window.location.pathname + '?' + currentUrlParams.toString()
-      );
     }
+    history.push(window.location.pathname + '?' + currentUrlParams.toString());
   };
 
   const handleDisplayStyleChange = (event, newDisplayStyle) => {
